@@ -1,0 +1,21 @@
+[workspace.package]
+authors = [
+  "Anthony Rubick <68485672+AnthonyMichaelTDM@users.noreply.github.com>",
+]
+description = "Logto helps you build the sign-in experience and user identity within minutes."
+version = "0.0.0"
+edition = "2021"
+keywords = ["logto", "authentication", "identity", "oauth", "openid"]
+categories = ["authentication", "web-programming", "api-bindings"]
+publish = false # TODO: Change to true when ready to publish
+
+readme = "README.md"
+license = "MIT"
+license-file = "LICENSE"
+
+repository = "https://github.com/AnthonyMichaelTDM/logto-rs"
+documentation = "https://docs.logto.io/docs/recipes/integrate-logto/rust/"
+homepage = "https://logto.io"
+
+[workspace]
+members = ["client", "core"]
