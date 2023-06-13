@@ -1,0 +1,21 @@
+[package]
+name = "logto-client"
+authors.workspace = true
+description.workspace = true
+version.workspace = true
+edition.workspace = true
+keywords.workspace = true
+categories.workspace = true
+publish.workspace = true
+
+readme.workspace = true
+license.workspace = true
+license-file.workspace = true
+
+repository.workspace = true
+documentation.workspace = true
+homepage.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

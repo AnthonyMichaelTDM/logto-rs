@@ -1,0 +1,84 @@
+name: Rust Continuous Integration
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - "main"
+    paths:
+      - "**.rs"
+      - "Cargo.lock"
+      - "Cargo.toml"
+      - "**/CI.yml"
+  pull_request:
+    paths: 
+      - "**.rs"
+      - "Cargo.lock"
+      - "Cargo.toml"
+      - "**/CI.yml"
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_REGISTRIES_CRATES_IO_PROTOCOL: sparse
+  
+concurrency:
+  group:  CI-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3.5.0
+      
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+            profile: minimal
+            toolchain: stable
+            override: true
+            components: clippy
+
+      - name: Cache Rust Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/            
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Clippy w/ debug-assertions
+        uses: actions-rs/cargo@v1.0.3
+        with:
+          command: clippy
+          args: -- -D warnings -C debug-assertions=y
+  
+      - name: Clippy w/o debug-assertions
+        uses: actions-rs/cargo@v1.0.3
+        with:
+          command: clippy
+          args: -- -D warnings -C debug-assertions=n
+ 
+      - name: Tests
+        uses: actions-rs/cargo@v1.0.3
+        with:
+          command: test
+  
+  fmt:
+    name: format check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.5.0
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+            profile: minimal
+            toolchain: stable
+            override: true
+      - uses: actions-rs/cargo@v1.0.3
+        with:
+          command: fmt
+          args: --all -- --check
