@@ -10,7 +10,6 @@ publish.workspace = true
 
 readme.workspace = true
 license.workspace = true
-license-file.workspace = true
 
 repository.workspace = true
 documentation.workspace = true
