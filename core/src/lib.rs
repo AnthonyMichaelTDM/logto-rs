@@ -22,12 +22,12 @@
 //!     - [ ] verifyIdToken
 //!     - [ ] verifyAndParseCodeFromCallbackUri
 //! - Core Functions
-//!     - [ ] fetchOidcConfig
+//!     - [X] fetchOidcConfig
 //!     - [ ] generateSignInUri
 //!     - [ ] generateSignOutUri
 //!     - [ ] fetchTokenByAuthorizationCode
 //!     - [ ] fetchTokenByRefreshToken
 //!     - [ ] revoke
 
-mod errors;
+pub mod errors;
 pub mod oidc_config;

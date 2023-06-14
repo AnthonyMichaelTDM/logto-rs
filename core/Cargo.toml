@@ -30,3 +30,8 @@ serde_with = "3.0"
 thiserror = "1.0"
 url = { version = "2.4", features = ["serde"] }
 base64 = "0.21"
+
+[dev-dependencies]
+httpmock = "0.6"
+tokio-test = "0.4"
+pretty_assertions = "1.3"
