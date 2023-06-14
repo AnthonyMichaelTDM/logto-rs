@@ -10,7 +10,7 @@
 //!
 //! ## Functionality
 //! - Types
-//!     - [ ] OidcConfigResponse
+//!     - [X] OidcConfigResponse
 //!     - [ ] CodeTokenResponse
 //!     - [ ] RefreshTokenResponse
 //!     - [ ] IdTokenClaims
@@ -30,3 +30,4 @@
 //!     - [ ] revoke
 
 mod errors;
+pub mod oidc_config;
