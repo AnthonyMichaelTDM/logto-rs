@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v3.6.0
       
       - name: Install Rust
         uses: actions-rs/toolchain@v1
@@ -71,7 +71,7 @@ jobs:
     name: format check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.5.3
+      - uses: actions/checkout@v3.6.0
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
